@@ -44,6 +44,9 @@ def datacutup(data):
 	data=(str(data)).replace("\t","")
 	data=(str(data)).replace("\r","")
 	data=(str(data)).replace(" ","")
+	data=(str(data)).replace(" ","")
+	data=(str(data)).replace(u'\u3000',u'')
+	data=(str(data)).replace("\[","")
 	return data
 
 def gettitle(data):
@@ -78,7 +81,7 @@ def downLoad(jpgUrl,n,name):
 def main():
 	ssl._create_default_https_context = ssl._create_unverified_context
 	start_num=559
-	maxnum=5
+	maxnum=100
 	pathroot=os.getcwd()  
 
 	i=0
@@ -106,7 +109,7 @@ def main():
 		if os.path.exists(dirname) is False :
 			os.mkdir(dirname)
 		os.chdir(dirname)
-		f = open(title+".txt",'w') # 写模式
+		f = open(title+".txt",'w',encoding='utf-8') # 写模式
 		f.write(infomation)
 
 		#download picture
