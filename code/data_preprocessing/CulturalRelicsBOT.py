@@ -46,7 +46,6 @@ def datacutup(data):
 	data=(str(data)).replace(" ","")
 	data=(str(data)).replace(" ","")
 	data=(str(data)).replace(u'\u3000',u'')
-	data=(str(data)).replace("\[","")
 	return data
 
 def gettitle(data):
@@ -65,7 +64,8 @@ def getinfo(data):
 	tm=re.sub(r'<.*?>',"",tm)
 	tm=re.sub(r'TAG.*',"",tm)
 	tm=re.sub(" ","",tm)
-	return str(tm)
+	tm=tm.replace("['","")
+	return tm
 
 
 def downLoad(jpgUrl,n,name):
@@ -81,7 +81,7 @@ def downLoad(jpgUrl,n,name):
 def main():
 	ssl._create_default_https_context = ssl._create_unverified_context
 	start_num=559
-	maxnum=100
+	maxnum=1
 	pathroot=os.getcwd()  
 
 	i=0
